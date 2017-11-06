@@ -1,0 +1,4 @@
+Typically using 'for' iteration for pixel reading, like below:
+for i in range(rows):
+	for j in range(columns):
+		pixel_value = cvMat[i][j] ## it is row first and column second;
