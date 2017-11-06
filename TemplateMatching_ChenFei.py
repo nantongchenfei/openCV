@@ -2,14 +2,14 @@ import numpy as np
 import cv2
 
 def TemplateMatching(src, temp, stepsize): # src: source image, temp: template image, stepsize: the step size for sliding the template
-    mean_t = 0;
-    var_t = 0;
-    location = [0, 0];
+    mean_t = np.uint64(0)
+    var_t = np.uint64(0)
+    location = [0, 0]
     # Calculate the mean and variance of template pixel values
     # ------------------ Put your code below ------------------
-    sumSquare = 0
-    squareSum = 0
-    Sum = 0
+    sumSquare = np.uint64(0)
+    squareSum = np.uint64(0)
+    Sum = np.uint64(0)
     N = temp.size
     for i in np.arange(0, temp.shape[0]):
         for j in np.arange(0, temp.shape[1]):
@@ -22,14 +22,15 @@ def TemplateMatching(src, temp, stepsize): # src: source image, temp: template i
     # Slide window in source image and find the maximum correlation
     for i in np.arange(0, src.shape[0] - temp.shape[0], stepsize):
         for j in np.arange(0, src.shape[1] - temp.shape[1], stepsize):
-            mean_s = 0;
-            var_s = 0;
-            corr = 0;
+            print ((i,j))
+            mean_s =  np.uint64(0)
+            var_s =  np.uint64(0)
+            corr =  np.uint64(0)
             # Calculate the mean and variance of source image pixel values inside window
             # ------------------ Put your code below ------------------
-            sumSquare = 0
-            squareSum = 0
-            Sum = 0
+            sumSquare =  np.uint64(0)
+            squareSum =  np.uint64(0)
+            Sum = np.uint64(0)
             for n in np.arange(0, temp.shape[0]):
                 for m in np.arange(0, temp.shape[1]):
                     Sum += src[n+i,m+j]
@@ -52,7 +53,9 @@ def TemplateMatching(src, temp, stepsize): # src: source image, temp: template i
 def main():
     # load source and template images
     source_img = cv2.imread('source_img.jpg',0) # read image in grayscale
+    print(source_img.shape)
     temp = cv2.imread('template.jpg',0) # read image in grayscale
+    print(temp.shape)
     location = TemplateMatching(source_img, temp, 20);
     print(location)
     match_img = cv2.cvtColor(source_img, cv2.COLOR_GRAY2RGB)
