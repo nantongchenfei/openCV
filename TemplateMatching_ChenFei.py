@@ -57,14 +57,14 @@ def main():
     print(source_img.shape)
     temp = cv2.imread('template.jpg',0) # read image in grayscale
     print(temp.shape)
-    location = TemplateMatching(source_img, temp, 50);
+    location = TemplateMatching(source_img, temp, 20);
     print(location)
     match_img = cv2.cvtColor(source_img, cv2.COLOR_GRAY2RGB)
 
     # Draw a red rectangle on match_img to show the template matching result
     # ------------------ Put your code below ------------------
     (x, y) = location
-    (w, h) = temp.shape
+    (h, w) = temp.shape
     cv2.rectangle(match_img,(x,y),(x+w,y+h),(255,0,0),3)
 
         
