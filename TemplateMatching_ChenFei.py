@@ -70,7 +70,7 @@ def main():
         
     # Save the template matching result image (match_img)
     # ------------------ Put your code below ------------------ 
-    cv2.imwrite('MyTemplateMatching', match_img)
+    cv2.imwrite('MyTemplateMatching.jpg', match_img)
 
 
     # Display the template image and the matching result
