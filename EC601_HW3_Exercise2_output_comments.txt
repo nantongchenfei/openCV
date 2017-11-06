@@ -1,0 +1,4 @@
+Median Filter works better for Gaussian noise, peper_salt noise, while making the picture blured with less resolution;
+the range of pixel value is (0,255);
+
+
