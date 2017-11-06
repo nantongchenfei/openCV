@@ -44,10 +44,11 @@ def TemplateMatching(src, temp, stepsize): # src: source image, temp: template i
                 for m in np.arange(0, temp.shape[1]):
                     corr += (src[n+i,m+j] - mean_s) * (temp[n,m] - mean_t)
             corr = corr / (N * var_t * var_s)
-            
+            print("corr = " + str(corr))
             if corr > max_corr:
                 max_corr = corr;
                 location = [i, j];
+                print("Max corr = " + str(corr))
     return location
 
 def main():
@@ -56,7 +57,7 @@ def main():
     print(source_img.shape)
     temp = cv2.imread('template.jpg',0) # read image in grayscale
     print(temp.shape)
-    location = TemplateMatching(source_img, temp, 20);
+    location = TemplateMatching(source_img, temp, 50);
     print(location)
     match_img = cv2.cvtColor(source_img, cv2.COLOR_GRAY2RGB)
 
@@ -64,12 +65,12 @@ def main():
     # ------------------ Put your code below ------------------
     (x, y) = location
     (w, h) = temp.shape
-    cv2.rectanle(match_img,(x,y),(x+w,y+h),(255,0,0),3)
+    cv2.rectangle(match_img,(x,y),(x+w,y+h),(255,0,0),3)
 
         
     # Save the template matching result image (match_img)
     # ------------------ Put your code below ------------------ 
-    cv2.imwrite('MyTemplateMatching', img)
+    cv2.imwrite('MyTemplateMatching', match_img)
 
 
     # Display the template image and the matching result
