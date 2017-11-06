@@ -1,0 +1,4 @@
+1. Disadvantage of the binary threshold: it shows the shadow and light part of the input picture but lost distinguishments within each the shadow and in the light areas;
+2. Convert the layout of PCB(or IC) picture into manufacturable file of positive area(copper trace to be kept) and negtive area(the copper to be etched).
+
+
